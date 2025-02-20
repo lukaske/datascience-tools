@@ -14618,6 +14618,15 @@ table{
     width: 100%;
 }
 
+td {
+    text-align: left!important;
+}
+
+th {
+    text-align: left!important;
+    text-transform: capitalize; 
+}
+
 h1 {
     text-transform: uppercase;
     text-align: center;
@@ -14696,6 +14705,170 @@ h3:before {
 <li><p>Find out what is the cancellation rate of the bookings as a function of lead time?</p>
 </li>
 </ol>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs jp-mod-noInput">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Structure-of-data">Structure of data<a class="anchor-link" href="#Structure-of-data">¶</a></h2><p>First, we will look into the column structure of our dataset.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<table border="1" class="dataframe table-style" style="text-align: left">
+<thead>
+<tr style="text-align: right;">
+<th>Column name</th>
+<th>Data type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hotel</td>
+<td>object</td>
+</tr>
+<tr>
+<td>is_canceled</td>
+<td>int64</td>
+</tr>
+<tr>
+<td>lead_time</td>
+<td>int64</td>
+</tr>
+<tr>
+<td>arrival_date_year</td>
+<td>int64</td>
+</tr>
+<tr>
+<td>arrival_date_month</td>
+<td>object</td>
+</tr>
+<tr>
+<td>arrival_date_week_number</td>
+<td>int64</td>
+</tr>
+<tr>
+<td>arrival_date_day_of_month</td>
+<td>int64</td>
+</tr>
+<tr>
+<td>stays_in_weekend_nights</td>
+<td>int64</td>
+</tr>
+<tr>
+<td>stays_in_week_nights</td>
+<td>int64</td>
+</tr>
+<tr>
+<td>adults</td>
+<td>int64</td>
+</tr>
+<tr>
+<td>children</td>
+<td>float64</td>
+</tr>
+<tr>
+<td>babies</td>
+<td>int64</td>
+</tr>
+<tr>
+<td>is_repeated_guest</td>
+<td>int64</td>
+</tr>
+<tr>
+<td>previous_cancellations</td>
+<td>int64</td>
+</tr>
+<tr>
+<td>previous_bookings_not_canceled</td>
+<td>int64</td>
+</tr>
+<tr>
+<td>reserved_room_type</td>
+<td>object</td>
+</tr>
+<tr>
+<td>assigned_room_type</td>
+<td>object</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<blockquote>
+<p>More detailed descriptions on Kaggle → <a href="https://www.kaggle.com/datasets/mojtaba142/hotel-booking/data">Hotel Booking Dataset</a></p>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Interestingly, number of children is a <code>float64</code> 🤔 ... but based on grouping it seems that this is just a quirk. The column is always a whole number, but stored as a float.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noInput">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<table border="1" class="dataframe table-style" style="text-align: left">
+<thead>
+<tr style="text-align: right;">
+<th>children</th>
+<th>count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.0</td>
+<td>110796</td>
+</tr>
+<tr>
+<td>1.0</td>
+<td>4861</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td>3652</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>76</td>
+</tr>
+<tr>
+<td>10.0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
