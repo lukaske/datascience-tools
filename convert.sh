@@ -1,1 +1,1 @@
-jupyter nbconvert --to html --no-input hotels-analysis.ipynb 
+jupyter nbconvert --to html --no-input --output ./dist/index.html hotels-analysis.ipynb 
